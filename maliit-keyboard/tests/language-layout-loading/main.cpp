@@ -112,7 +112,7 @@ Keyboard stringToKeyboard(const QString &str)
                 break;
 
             case ' ':
-                if (not kb.key_descriptions.isEmpty()) {
+                if (!kb.key_descriptions.isEmpty()) {
                     KeyDescription& last(kb.key_descriptions.last());
 
                     if (last.row == row) {

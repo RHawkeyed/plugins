@@ -164,7 +164,7 @@ void Surface::setSize(const QSize &a_size)
     const QRect rect(QPoint(), size());
 
     setSceneRect(rect);
-    if (not d->m_root_item.isNull ()) {
+    if (!d->m_root_item.isNull ()) {
         d->m_root_item->setRect(rect);
     }
 }
@@ -200,7 +200,7 @@ QPoint Surface::relativePosition() const
 QPoint Surface::translateEventPosition(const QPoint &eventPosition,
                                        Surface *eventSurface) const
 {
-    if (not eventSurface) {
+    if (!eventSurface) {
         return eventPosition;
     }
 

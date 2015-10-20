@@ -63,6 +63,7 @@ typedef MaliitKeyboard::NullFeedback DefaultFeedback;
 #include <QWidget>
 #include <QDesktopWidget>
 #include <QtQuick>
+#include <QDebug>
 
 class MImUpdateEvent;
 
@@ -367,6 +368,7 @@ InputMethod::~InputMethod()
 
 void InputMethod::show()
 {
+    qDebug() << "maliit-plugins InputMethod::show() called";
     Q_D(InputMethod);
 
     const QRect &rect = d->surface->screen()->availableGeometry();
@@ -455,7 +457,7 @@ bool InputMethod::imExtensionEvent(MImExtensionEvent *event)
 {
     Q_D(InputMethod);
 
-    if (not event or event->type() != MImExtensionEvent::Update) {
+    if (!event || event->type() != MImExtensionEvent::Update) {
         return false;
     }
 

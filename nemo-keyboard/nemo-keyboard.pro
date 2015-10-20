@@ -17,4 +17,6 @@ other_files.path = $${MALIIT_PLUGINS_DATA_DIR}
 QMAKE_CLEAN += libdummy.so*
 INSTALLS += plugin other_files
 
-
+msvc{
+    QMAKE_LFLAGS += /NOENTRY #msvc defaults to main entry, but this dll doesn't have one
+}

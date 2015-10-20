@@ -2,10 +2,17 @@
 QMAKE_LFLAGS_RELEASE+=-Wl,--as-needed
 # Compiler warnings are error if the build type is debug.
 # Except when we pass a CONFIG+=no-werror as a workaround for QTBUG-18092
-no-werror {
-    QMAKE_CXXFLAGS_DEBUG+=-O0
-} else {
-    QMAKE_CXXFLAGS_DEBUG+=-Werror -O0
+!msvc{
+    no-werror {
+        QMAKE_CXXFLAGS_DEBUG+=-O0
+    } else {
+        QMAKE_CXXFLAGS_DEBUG+=-Werror -O0
+    }
+}
+
+msvc{
+    QMAKE_LFLAGS += /MACHINE:X86
+    DEFINES += __PRETTY_FUNCTION__=__FUNCSIG__ #msvc uses __FUNCSIG__ instaed
 }
 
 CONFIG += no_keywords

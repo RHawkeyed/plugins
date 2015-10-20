@@ -22,3 +22,7 @@ htmldocs.CONFIG += no_check_exist directory
 INSTALLS += htmldocs
 
 OTHER_FILES += $$DOXYFILE
+
+msvc{
+    QMAKE_LFLAGS += /NOENTRY #msvc defaults to main entry, but this dll doesn't have one
+}

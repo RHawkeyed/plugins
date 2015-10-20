@@ -12,3 +12,7 @@ OTHER_FILES += \
     maliit-keyboard-extended.qml \
     maliit-magnifier.qml \
     Keyboard.qml \
+
+msvc{
+    QMAKE_LFLAGS += /NOENTRY #msvc defaults to main entry, but this dll doesn't have one
+}

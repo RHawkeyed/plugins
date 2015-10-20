@@ -35,12 +35,14 @@
 #include "logic/style.h"
 #include <QtCore>
 
+#include "common.h"
+
 namespace MaliitKeyboard {
 
 class InputMethod;
 class MaliitContextPrivate;
 
-class MaliitContext
+class MALIIT_KEYBOARD_PLUGIN_LIBRARY MaliitContext
     : public QObject
 {
     Q_OBJECT

@@ -38,11 +38,13 @@
 #include <maliit/plugins/keyoverride.h>
 #include <QtGui>
 
+#include "common.h"
+
 namespace MaliitKeyboard {
 
 class InputMethodPrivate;
 
-class InputMethod
+class MALIIT_KEYBOARD_PLUGIN_LIBRARY InputMethod
     : public MAbstractInputMethod
 {
     Q_OBJECT

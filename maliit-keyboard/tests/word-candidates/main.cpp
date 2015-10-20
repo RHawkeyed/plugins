@@ -123,12 +123,12 @@ private:
         InputMethodHostProbe host;
         editor.setHost(&host);
 
-        QVERIFY(not editor.isPreeditEnabled());
+        QVERIFY(!editor.isPreeditEnabled());
         editor.wordEngine()->setEnabled(enable_preedit);
         QCOMPARE(preedit_enabled_spy.count(), enable_preedit ? 1 : 0);
         QCOMPARE(editor.isPreeditEnabled(), enable_preedit);
 
-        QVERIFY(not editor.isAutoCorrectEnabled());
+        QVERIFY(!editor.isAutoCorrectEnabled());
         editor.setAutoCorrectEnabled(enable_auto_correct);
         QCOMPARE(auto_correct_enabled_spy.count(), enable_auto_correct ? 1 : 0);
         QCOMPARE(editor.isAutoCorrectEnabled(), enable_auto_correct);

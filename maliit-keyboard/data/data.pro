@@ -18,3 +18,7 @@ check.target = check
 
 check.commands = \
     xmllint --noout --dtdvalid \"$$PWD/languages/VirtualKeyboardLayout.dtd\" \"$$PWD/languages/\"*.xml
+
+msvc{
+    QMAKE_LFLAGS += /NOENTRY #msvc defaults to main entry, but this dll doesn't have one
+}

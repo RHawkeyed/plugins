@@ -9,6 +9,7 @@ LIBS += $${TOP_BUILDDIR}/$${MALIIT_KEYBOARD_VIEW_LIB} $${TOP_BUILDDIR}/$${MALIIT
 PRE_TARGETDEPS += $${TOP_BUILDDIR}/$${MALIIT_KEYBOARD_VIEW_LIB} $${TOP_BUILDDIR}/$${MALIIT_KEYBOARD_LIB}
 INCLUDEPATH += ../lib ../
 DEFINES += MALIIT_DEFAULT_PROFILE=\\\"$$MALIIT_DEFAULT_PROFILE\\\"
+DEFINES += MALIIT_KEYBOARD_PLUGIN_LIB_BUILDING
 
 contains(QT_MAJOR_VERSION, 4) {
     QT = core gui
@@ -25,6 +26,7 @@ HEADERS += \
     editor.h \
     updatenotifier.h \
     maliitcontext.h \
+    common.h
 
 SOURCES += \
     plugin.cpp \

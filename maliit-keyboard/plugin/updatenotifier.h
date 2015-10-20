@@ -37,6 +37,8 @@
 
 #include "logic/layouthelper.h"
 
+#include "common.h"
+
 class MImUpdateEvent;
 
 namespace MaliitKeyboard {
@@ -44,7 +46,7 @@ namespace MaliitKeyboard {
 class UpdateNotifierPrivate;
 class Key;
 
-class UpdateNotifier
+class MALIIT_KEYBOARD_PLUGIN_LIBRARY UpdateNotifier
     : public QObject
 {
     Q_OBJECT

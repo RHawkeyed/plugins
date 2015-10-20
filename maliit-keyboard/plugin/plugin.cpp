@@ -32,6 +32,8 @@
 #include "plugin.h"
 #include "inputmethod.h"
 
+#include <QDebug>
+
 MaliitKeyboardPlugin::MaliitKeyboardPlugin(QObject *parent)
     : QObject(parent)
     , Maliit::Plugins::InputMethodPlugin()

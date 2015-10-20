@@ -40,9 +40,11 @@
 #include <maliit/plugins/abstractinputmethodhost.h>
 #include <QtCore>
 
+#include "common.h"
+
 namespace MaliitKeyboard {
 
-class Editor
+class MALIIT_KEYBOARD_PLUGIN_LIBRARY Editor
     : public Logic::AbstractTextEditor
 {
     Q_OBJECT

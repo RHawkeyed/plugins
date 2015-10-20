@@ -38,6 +38,8 @@
 
 #include <QtCore>
 
+#include "common.h"
+
 namespace MaliitKeyboard {
 namespace Logic {
 
