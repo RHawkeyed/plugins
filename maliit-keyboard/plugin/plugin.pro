@@ -17,6 +17,10 @@ contains(QT_MAJOR_VERSION, 4) {
     QT = core gui widgets quick qml
 }
 
+win32{
+    LIBS += -luser32
+}
+
 CONFIG += \
     plugin \
 
@@ -26,7 +30,8 @@ HEADERS += \
     editor.h \
     updatenotifier.h \
     maliitcontext.h \
-    common.h
+    common.h \
+    myQuickView.h
 
 SOURCES += \
     plugin.cpp \
@@ -34,6 +39,7 @@ SOURCES += \
     editor.cpp \
     updatenotifier.cpp \
     maliitcontext.cpp \
+    myQuickView.cpp
 
 target.path += $${MALIIT_PLUGINS_DIR}
 INSTALLS += target

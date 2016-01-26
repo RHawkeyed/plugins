@@ -9,6 +9,12 @@ CONFIG += staticlib
 INCLUDEPATH = ../lib
 LIBS += $${TOP_BUILDDIR}/$${MALIIT_KEYBOARD_LIB}
 
+win32{
+    LIBS += -luser32
+}
+
+CONFIG += console
+
 PRE_TARGETDEPS += $${TOP_BUILDDIR}/$${MALIIT_KEYBOARD_LIB}
 
 contains(QT_MAJOR_VERSION, 4) {

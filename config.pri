@@ -17,6 +17,8 @@ msvc{
 
 CONFIG += no_keywords
 
+CONFIG += console
+
 # The feature maliit-defines initializes some variables related for MALIIT, such as installation paths
 # here have to load it early, to start using the defines immediately
 !load(maliit-defines) {

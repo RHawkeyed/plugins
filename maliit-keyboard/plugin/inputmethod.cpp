@@ -47,6 +47,8 @@
 #include "logic/languagefeatures.h"
 #include "logic/eventhandler.h"
 
+#include "myQuickView.h"
+
 #ifdef HAVE_QT_MOBILITY
 #include "view/soundfeedback.h"
 typedef MaliitKeyboard::SoundFeedback DefaultFeedback;
@@ -88,7 +90,7 @@ void makeQuickViewTransparent(QQuickView *view)
 
 QQuickView *getSurface (MAbstractInputMethodHost *host)
 {
-    QScopedPointer<QQuickView> view(new QQuickView (0));
+    QScopedPointer<QQuickView> view(new myQuickView (0));
 
     host->registerWindow (view.data(), Maliit::PositionCenterBottom);
 
@@ -104,6 +106,8 @@ QQuickView *getOverlaySurface (MAbstractInputMethodHost *host, QQuickView *paren
     view->setTransientParent(parent);
 
     host->registerWindow (view.data(), Maliit::PositionOverlay);
+
+    view.data()->setFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::WindowTransparentForInput | Qt::WindowDoesNotAcceptFocus);
 
     makeQuickViewTransparent(view.data());
 
@@ -204,6 +208,8 @@ InputMethodPrivate::InputMethodPrivate(InputMethod *const q,
 {
     editor.setHost(host);
 
+    qDebug() << "InputMethodPrivate constructor";
+
 #ifndef DISABLE_PREEDIT
     editor.setPreeditEnabled(true);
 #endif
@@ -233,11 +239,11 @@ InputMethodPrivate::InputMethodPrivate(InputMethod *const q,
 
     surface->setSource(QUrl::fromLocalFile(g_maliit_keyboard_qml));
 
-    QQmlEngine *const extended_engine(extended_surface->engine());
-    extended_engine->addImportPath(MALIIT_KEYBOARD_DATA_DIR);
-    setContextProperties(extended_engine->rootContext());
+//    QQmlEngine *const extended_engine(extended_surface->engine());
+//    extended_engine->addImportPath(MALIIT_KEYBOARD_DATA_DIR);
+//    setContextProperties(extended_engine->rootContext());
 
-    extended_surface->setSource(QUrl::fromLocalFile(g_maliit_keyboard_extended_qml));
+//    extended_surface->setSource(QUrl::fromLocalFile(g_maliit_keyboard_extended_qml));
 
     QQmlEngine *const magnifier_engine(magnifier_surface->engine());
     magnifier_engine->addImportPath(MALIIT_KEYBOARD_DATA_DIR);
