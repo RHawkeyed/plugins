@@ -648,9 +648,9 @@ void InputMethod::onStyleSettingChanged()
 {
     Q_D(InputMethod);
     d->style->setProfile(d->settings.style->value().toString());
-    d->layout.model.setImageDirectory(d->style->directory(Style::Images));
-    d->extended_layout.model.setImageDirectory(d->style->directory(Style::Images));
-    d->magnifier_layout.setImageDirectory(d->style->directory(Style::Images));
+    d->layout.model.setImageDirectory("file:///" + d->style->directory(Style::Images));
+    d->extended_layout.model.setImageDirectory("file:///" + d->style->directory(Style::Images));
+    d->magnifier_layout.setImageDirectory("file:///" + d->style->directory(Style::Images));
 }
 
 void InputMethod::onKeyboardClosed()
