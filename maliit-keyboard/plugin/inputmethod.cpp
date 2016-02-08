@@ -85,9 +85,30 @@ void makeQuickViewTransparent(QQuickView *view)
     view->setColor(QColor(Qt::transparent));
 }
 
+class myQQuickView : public QQuickView{
+    
+public:
+    myQQuickView(QWindow * parent = 0): QQuickView(parent){}
+    
+protected:
+    
+    void showEvent(QShowEvent *event) override{
+        QQuickView::showEvent(event);
+    
+#if WIN32
+        // prevent keyboard from taking focus when clicked on Windows operating system
+        HWND winHandle = (HWND)winId();
+        ShowWindow(winHandle, SW_HIDE);
+        SetWindowLong(winHandle, GWL_EXSTYLE, GetWindowLong(winHandle, GWL_EXSTYLE)
+            | WS_EX_NOACTIVATE | WS_EX_APPWINDOW);
+        ShowWindow(winHandle, SW_SHOW);
+#endif
+    }
+};
+
 QQuickView *getSurface (MAbstractInputMethodHost *host)
 {
-    QScopedPointer<QQuickView> view(new QQuickView (0));
+    QScopedPointer<QQuickView> view(new myQQuickView (0));
 
     host->registerWindow (view.data(), Maliit::PositionCenterBottom);
 
@@ -98,7 +119,7 @@ QQuickView *getSurface (MAbstractInputMethodHost *host)
 
 QQuickView *getOverlaySurface (MAbstractInputMethodHost *host, QQuickView *parent)
 {
-    QScopedPointer<QQuickView> view(new QQuickView (0));
+    QScopedPointer<QQuickView> view(new myQQuickView (0));
 
     view->setTransientParent(parent);
 
