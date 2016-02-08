@@ -127,6 +127,12 @@ QQuickView *getOverlaySurface (MAbstractInputMethodHost *host, QQuickView *paren
 
     makeQuickViewTransparent(view.data());
 
+    // Overlays should be hidden from the start, otherwise it may block 
+    // underlying surface despite the overlay being empty. For hide() to work 
+    // it needs to be shown first. 
+    view->show();
+    view->hide();
+
     return view.take ();
 }
 
